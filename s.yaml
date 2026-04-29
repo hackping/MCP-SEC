@@ -1,0 +1,38 @@
+edition: 3.0.0
+name: mcp-sec
+services:
+  server:
+    component: fc3
+    actions:
+      deploy:
+        - run: npm install
+          path: ./
+      pre-deploy:
+        - run: npm install
+          path: ./
+    props:
+      region: cn-hangzhou
+      service:
+        name: mcp-sec-service
+      function:
+        name: ping
+        runtime: Node.js20
+        codeUri: ./
+        handler: index.handler
+        memorySize: 256
+        timeout: 60
+      triggers:
+        - name: http
+          type: http
+          config:
+            methods:
+              - GET
+              - POST
+            authType: anonymous
+      customDomains:
+        - domain: auto
+          protocol: http
+          routeConfigs:
+            - path: /*
+              serviceName: mcp-sec-service
+              functionName: ping

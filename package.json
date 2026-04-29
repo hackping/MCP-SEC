@@ -1,0 +1,14 @@
+{
+  "name": "mcp-sec",
+  "version": "1.0.0",
+  "description": "MCP Server with ping capability",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
